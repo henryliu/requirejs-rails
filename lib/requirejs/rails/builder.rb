@@ -26,6 +26,7 @@ module Requirejs::Rails
     def generate_rjs_driver
       templ = Erubis::Eruby.new(@config.driver_template_path.read)
       @config.driver_path.open('w') do |f|
+        puts templ.result(@config.get_binding)        
         f.write(templ.result(@config.get_binding))
       end
     end
